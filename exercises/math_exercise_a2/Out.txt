@@ -1,0 +1,12 @@
+The value of the square root of 2 is 1.4142135623731 
+The value of 2 to the power of 1/5 is 1.14869835499704
+The value of e to the power of pi is 23.1406926327793
+The value of pi to the power of e is 22.459157718361
+Gamme of 1 is 0.999999989064903
+Gamme of 1 is 0.999999989064903
+Gamme of 1 is 1.99999997812981
+Gamme of 1 is 362879.997652016
+Gamme of 1 is -1.0935097442935E-08
+Gamme of 1 is -1.0935097442935E-08
+Gamme of 1 is 0.693147169624848
+Gamme of 1 is 12.8018274736111
