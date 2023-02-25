@@ -1,42 +1,45 @@
-#RM = rm ---force     # this by default
+#RM = rm ---force
 
-all:Out.txt
+all: Out.txt
 
-Out.txt : main.exe Makefile infile.txt numbers.txt
-	mono main.exe hello world \
-		-input:infile.txt		  \
-		-output:outfile.txt       \
-		-numbers:1,2,3,4,5,6 1> $@ 2> log < infile.txt 
-	cat infile.txt | mono main.exe hello world \
-		-input:infile.txt		  \
-		-output:outfile.txt       \
-		$$(cat numbers.txt) 1>> $@ 2>> log 
-#redirecting standard inputs
+Out.txt : cmdline.exe stdin.exe filestream.exe inputfile.txt Makefile
+	>$@
+	
+	echo "Reading numbers from command-line arguments:" >>$@
+	mono cmdline.exe -numbers:1e-2,-2e4,3.1415 1>>$@ 2>>log
+	
+	echo "Reading numbers from stdandard input:" >>$@
+	mono stdin.exe <inputfile.txt 1>>$@ 2>>log
+	
+	echo "Reading numbers from a file and writing to a file:" >>$@
+	mono filestream.exe -input:inputfile.txt -output:outfile.txt \
+		1>>$@ 2>>log
+	echo "here is a copy of the output:" >>$@
+	cat outfile.txt >> $@
 
-main.exe : main.cs input.dll
+cmdline.exe : cmdline.cs
 	mcs -target:exe -out:$@ \
 	$(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
-# other convention, need $ to adress variable or function, string default
-# filter finds all files of .cs ?
+stdin.exe : stdin.cs
+	mcs -target:exe -out:$@ \
+	$(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
-input.dll : input.cs
-	mcs -target:library -out:$@ $(filter %.cs,$^)
+filestream.exe : filestream.cs
+	mcs -target:exe -out:$@ \
+	$(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
 numbers.txt : Makefile
-	echo "-numbers:7,8,9" > $@
+	echo "-numbers:-7.7e-8,8.8e-2,9.9e-3" > $@
 
-# double $ signals that the variable is not for Makefile, strips of one
-# $ and sends the rest to shell
-
-infile.txt : Makefile
-	echo 1 >$@
-	echo 2 >>$@
-	echo 3 >>$@
+inputfile.txt : Makefile
+	echo -1.1e-3 >$@
+	echo 2e-4  >>$@
+	echo -3e-5 >>$@
 
 .PHONEY : clean
 clean:
 	$(RM) *.exe *.dll [Oo]ut* log*
-# quick and dirty, dont actually do it, put actual files
+
 test:
 	echo $(RM)
