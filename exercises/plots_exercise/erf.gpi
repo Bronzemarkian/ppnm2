@@ -1,0 +1,14 @@
+set terminal svg
+set key bottom right
+set output "Erf.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "Error Function"
+set terminal svg background "white" 
+plot [0:3][0:1.2] \
+ "erf.data" with lines linetype 1 title "theory" \
+ , "known.data" using ($1+1):($2) with points pointtype 4 title "experiment" \

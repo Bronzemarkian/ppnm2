@@ -1,6 +1,7 @@
 using System;
 using static System.Console;
 using static System.Math;
+using static cmath;
 
 public class main{
     
@@ -8,7 +9,7 @@ public class main{
     public static void Main(){
 
         complex x = new complex(-1,0);
-        WriteLine($"sqrt of -1: {cmath.sqrt(x)}"); // ugly solution!
+        WriteLine($"sqrt of -1: {sqrt(x)}"); // ugly solution! (before using cmath atleast)
 
         complex y = cmath.sqrt(complex.I);
         WriteLine($"sqrt of i: {y}");  

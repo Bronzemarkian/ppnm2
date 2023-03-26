@@ -1,0 +1,16 @@
+set terminal svg
+set key bottom right
+set output "exp.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "Exponential Fit of Radioactive Decay"
+set terminal svg background "white" 
+set key outside
+set key right top
+plot [0:16][0:120] \
+ "exp.data" with lines linetype 1 title "Exponential Fit"\
+ , "known.data" with errorbars pointtype 6 title "Experimental Data"

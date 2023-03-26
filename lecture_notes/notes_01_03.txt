@@ -1,0 +1,124 @@
+#mkBundle -0 main --simple main.exe sfuns.dll
+
+1) easiest, ax = b   x=1/a*b 
+would be system of equations, something like
+A_11*x_1+A_12*x_2=b_1
+A_21*x_1+A_22*x_2=b_2      Ax=b, A matrix, x and b vectors
+
+If infinitely precise computer, would look at determinant. If it is not 
+"basically" zero, so really small as we know, then it is invertible and 
+solutions isx = A^-1*b. If not invertible, then in theory no solution. 
+But never do this exact solution, numerically it is no good.
+
+in matlib matrix.cs is a matrix class, has the operations I think?
+A[i,j] need to define the indexes so we can extract the information, same
+for the vecotr b[i]. i column, j row?
+
+If in triangular form: Tx = b,
+T triangular matrix, either lower or upper, then we use
+
+2)
+
+This system can be solved easily by vec-substitution.
+Last equation is A_nn * x_n = b_n, get x_n = 1/A_nn * b_n.
+For triangular matrix, determinant is just product of diagonal elements.
+
+Now second-last equation would look like:
+
+A_n-1,n-1 x_n-1 + A_n-1,m * x_n = b_n-1
+can input x_n from above, then get x_n-1. Called (from the back) substitution
+(I think?). So transform to triangular matrix, then solve.
+
+Back-substitution takes n^2 operations.
+
+Most popular method to transform system of linear equations to a matrix
+of triangular form. Most fast and popular is LU decomposition, or
+LU factorization. Represent A = L * U (lower triangular * upper triangular).
+
+Usually we want elements of L matrix to be all 1s. If determinant of A is
+zero, we need to 'interchange two columns of the matrix' ?
+Can read wikipedia article on LU decomposition as well as dimitri PDF file.
+
+All the methods take rougly n^3 operations.
+
+When LU done, we solve it as
+
+A*x=b transformed to LUx=b_1. U*x=y, so L*y=b. Solved by one run of forward
+substitution. Solve U*x=y, solved by one run of back operations.
+
+detA = detL * detU, so detA = detU as detL = 1.
+
+LUP, LU with permitations. This can only be done on square matrix, but in
+physics we often have 'tall' matrixes. So LUP might be like an exam project.
+
+if A symmetric, then A = L * L^T, and A^T = L * L^T.
+Called cholesky decomposition, and is fastes for this case.
+
+If cholesky decomposition fails, A is singular. Fastest way to find out if
+a matrix is singular or not. If we have numbers of order 1, then 0 for us
+is machine epsilon. 
+
+4)
+QR decomposition. R right triangular (same as upper).
+Can also be QL decomposition, where L is lower. 
+
+A = Q*R, where Q is a othorgonal matrix, Q^T*Q=1. If A not singular, then
+still Q*Q^T=1, but 'that is a very different beast'.
+
+A*x=b
+QR*x=b => R*x = Q^T*b, upper triangular system solved by back substitution.
+detA = detQ*detR. Might get wrong sign of determinant? But often doesnt
+matter, as we only want to know if singular or not sometimes. 
+"you never need the determinant alone".
+
+Can use Gram-Schmidt Orthogonalization, or process. 
+A bit unstable. Everyone uses stabilized gram-schmidt Orthogonalization.
+A little better, but still unstable. So not used in principle on it's own,
+but it is easy to program for the students, so a good exercise. 
+
+Let's say A consists of only one column. | | = | | * |R|
+                                         |A| = |Q|      
+                                         | | = | |              
+
+|  |   |  | |R11|   R11 = sqrt(a1 dot a1)
+|a1| = |q1|
+|  |   |  |
+
+|  | |  |                    a2-q1*[(a2 dot q1) = R_12] 
+|a1| |a2|
+|  | |  |
+
+
+
+
+Now how do we calculate inverse matrix? 
+
+6) Inverse
+
+|A| |A|^-1 = 1, n linear equations. If xi is columns in A^-1, then
+A*xi = ei. n^3 operations. 
+
+
+7) Givens notation
+
+matrix A -> G_pq*A, do this until it becomes upper right triangle. 
+A -> produktsum_pq G_pqA = R. Product called G, then
+GA = R, so A = G^T*R as G orthorgonal, and G^T is our Q. 
+
+G_pq = matrix of 1 on diagonal, but in columns p,q have cos, sin, -sin and cos
+like a rotation matrix. Dont save entire matrix, only theta. 
+
+When G_pq multiplied on A then, only pp pq, qp and qq are involved. 
+
+8)
+
+Something like
+
+| Cos(t) Sin(t)| |xp| = |xpCos(t) + xqSin(t) | => 0
+|-Sin(t) Cos(y)| |xq|   |-xpSin(t) + xqCos(t)|
+
+so xpSin(t) = xqCos(t), tan(t) = xq/xp, or t = arctan(xq/xp)
+Use? t = atan2(xq,xp). Can use man an2. Never fails, most robust.
+
+
+
