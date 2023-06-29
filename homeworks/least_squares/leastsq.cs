@@ -17,20 +17,11 @@ public class leastsq{
         // now solve the equation:
         (matrix Q, matrix R) = qrgs.decomp(A);
         vector c = qrgs.solve(Q, R, b);
-
-        // Q.print();
-        // R.print();
-
-        // matrix Ainv = qrgs.inverse(Q,R);
-        // Ainv.print();
-        
         (matrix QR, matrix RR) = qrgs.decomp(R);
         matrix Rinv = qrgs.inverse(QR,RR);
-        matrix cov = Rinv*Rinv.T;
 
-        // matrix covinv = R.T*R;
-        // (matrix Qcov, matrix Rcov) = qrgs.decomp(covinv);
-        // matrix cov = qrgs.inverse(Qcov, Rcov);
+        // now write the covarians matrix:
+        matrix cov = Rinv*Rinv.T;
 
         vector dc = new vector(c.size);
         for(int i=0; i<c.size;i++) dc[i] = Sqrt(cov[i,i]);

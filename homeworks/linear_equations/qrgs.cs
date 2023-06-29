@@ -24,7 +24,7 @@ public class qrgs{
 
             // R x = Q^T b
 
-            b = Q.T*b; // our new b
+            b = Q.T*b; // our new b, but stll same x which solves it
 
 
             for(int i=b.size-1;i>=0;i--){

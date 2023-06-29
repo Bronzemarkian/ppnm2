@@ -1,9 +1,15 @@
+Since part B is integrated into part A, both parts will just be displayed here.
 We have data x, y and dy, but am doing a logarithmic fit, so I take the log to y and dy.
 The two functions I give is 1 and -z, which then gives c1 - c2*z when taking a linear combination.
 When exp is then taken, exp(c1-c2*z) = exp(c1)*exp(-c2*z) = a*exp(-lambda*z),
 so that exp(c1) = a and c2 = lambda.
 I plot it with the exponential taken. Refer to 'exp.svg' for the plot.
-My c's are 4.9511553496486 and 0.169887082001008
+
+The value of my c's are 4.9511553496486 and 0.169887082001008
 Error on the c's are 0.0339477544244211 and 0.169887082001008
+
 Half life from the fit is 4.08004641904341 days
-The uncertainty of the half life is 0.815296915118613 days
+The uncertainty of the half life is 0.166914715082983 days, and was calculated as
+dThalf = ln(2)/(lambda^2)*dlambda
+
+This does not entirely correlate with the actual half-life of 3.631 days

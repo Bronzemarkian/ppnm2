@@ -18,4 +18,4 @@ matrix.dll : $(DIR)/matrix.cs $(DIR)/vector.cs
 
 .PHONEY : clean
 clean : 
-	rm -f *.exe *.dll [Oo]ut*
+	rm -f *.exe *.dll [Oo]ut* *.svg *.data

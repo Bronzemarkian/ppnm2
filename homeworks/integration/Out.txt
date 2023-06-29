@@ -13,7 +13,8 @@ The value of the integral of 4*Sqrt(1-x^2) from 0 to 1 is 3.14183457802727 with 
 exact solution being 3.14159265358979 and using delta=0.001
 Is it within delta? True 
 
-Now to look at the error function. The plot of it can be seen on erf.svg
+Now to look at the error function. The plot of it can be seen on erf.svg 
+
 The Clenshaw is added as a small modification to the input values before the regular integrator is called.
 The value of the integral of 1/sqrt(x) from 0 to 1 with Clenshaw is 1.99999201046432 with 12 integrals
 calculated, and with an exact result of 2.

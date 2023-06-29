@@ -40,6 +40,7 @@ public class main{
         }
 
         System.IO.TextWriter outstream = new System.IO.StreamWriter(outfile);
+        outstream.WriteLine("Since part B is integrated into part A, both parts will just be displayed here.");
         outstream.WriteLine("We have data x, y and dy, but am doing a logarithmic fit, so I take the log to y and dy.");
 
         // we want to plot with log, so:
@@ -63,23 +64,25 @@ public class main{
         (vector c, vector dc, matrix cov) = leastsq.lsfit(fs, x, logy, dlogy);
     
         // now we try to plot, with exp of course.
-        outstream.WriteLine("I plot it with the exponential taken. Refer to 'exp.svg' for the plot.");
+        outstream.WriteLine("I plot it with the exponential taken. Refer to 'exp.svg' for the plot.\n");
 
         var fexp = new System.Func<double,double>[] {z => Exp(c[0]-z*c[1])};
         Plot(fexp,outfile2);
 
-        double T_half = Log(2)/c[1];
-        double dT_half = Log(2)/(Pow(c[1],2))*dc[0];
+        double T_half = Log(2)/c[1]; // ln(2)/lambda
+
+        // now to calculate the uncertaincy. If T = ln(2)/lambda, dT = -ln(2)/(lambda^2)*dlambda
+
+        double dT_half = Log(2)/(Pow(c[1],2))*dc[1];
 	    
-	    outstream.WriteLine($"My c's are {c[0]} and {c[1]}");
-        outstream.WriteLine($"Error on the c's are {dc[0]} and {c[1]}");
+	    outstream.WriteLine($"The value of my c's are {c[0]} and {c[1]}");
+        outstream.WriteLine($"Error on the c's are {dc[0]} and {c[1]}\n");
         outstream.WriteLine($"Half life from the fit is {T_half} days");
-        outstream.WriteLine($"The uncertainty of the half life is {dT_half} days");
+        outstream.WriteLine($"The uncertainty of the half life is {dT_half} days, and was calculated as");
+        outstream.WriteLine("dThalf = ln(2)/(lambda^2)*dlambda\n");
+        outstream.WriteLine($"This does not entirely correlate with the actual half-life of 3.631 days");
 
 	    if(outfile!=null) outstream.Close();
-
-        //cov.print;
-	
 	/* System.IO.TextWriter newstream = new System.IO.StreamWriter("mytestfile.log");
 	newstream.WriteLine("here is my new stream");
 	newstream.Close(); */ // just for future refference on how it works

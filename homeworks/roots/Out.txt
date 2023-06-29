@@ -1,56 +1,12 @@
-hey
-x=        15 
-J=
-       -30 
-deriv(1-x^2) = -30
-newtons step=     -7.47 
-Jx=        224 
-b=        224 
-Is A * x = b? Using approx: True
-x: 7.53333339662905, xs -7.46666660337095 and l: 1, should at least be 0.0009765625
-x=      7.53 
-J=
-     -15.1 
-deriv(1-x^2) = -15.0666667932581
-newtons step=      -3.7 
-Jx=       55.8 
-b=       55.8 
-Is A * x = b? Using approx: True
-x: 3.83303840501394, xs -3.70029499161511 and l: 1, should at least be 0.0009765625
-x=      3.83 
-J=
-     -7.67 
-deriv(1-x^2) = -7.66607681002788
-newtons step=     -1.79 
-Jx=       13.7 
-b=       13.7 
-Is A * x = b? Using approx: True
-x: 2.04696403825832, xs -1.78607436675562 and l: 1, should at least be 0.0009765625
-x=      2.05 
-J=
-     -4.09 
-deriv(1-x^2) = -4.09392807651664
-newtons step=    -0.779 
-Jx=       3.19 
-b=       3.19 
-Is A * x = b? Using approx: True
-x: 1.26774620916236, xs -0.779217829095962 and l: 1, should at least be 0.0009765625
-x=      1.27 
-J=
-     -2.54 
-deriv(1-x^2) = -2.53549241832471
-newtons step=    -0.239 
-Jx=      0.607 
-b=      0.607 
-Is A * x = b? Using approx: True
-x: 1.02827381330836, xs -0.239472395853994 and l: 1, should at least be 0.0009765625
-x=      1.03 
-J=
-     -2.06 
-deriv(1-x^2) = -2.05654762661673
-newtons step=   -0.0279 
-Jx=     0.0573 
-b=     0.0573 
-Is A * x = b? Using approx: True
-x: 1.00038871388352, xs -0.0278850994248438 and l: 1, should at least be 0.0009765625
-Solution to 1-x^2 is: 1.00038871388352
+First I try to find the solution to 1-x^2, which is a simple 1d equation.
+One solution to 1-x^2 is:         1 
+The other solution is:        -1 
+And these are exactly the two solutions we already know.
+
+I now try to find the extrenums to the rosenbrock valley function. I do this by looking
+at the roots of the gradient
+Solution to rosenbrock with guess (2,2) is=         1      0.999 
+f(x_sol)= -0.000358   0.000179 
+
+ This is also equal to the global minimum. No matter what else my starting-guess
+is, this is the only root I get.

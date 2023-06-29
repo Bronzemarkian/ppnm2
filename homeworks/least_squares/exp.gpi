@@ -1,8 +1,8 @@
 set terminal svg
 set key bottom right
 set output "exp.svg"
-set xlabel "x"
-set ylabel "y"
+set xlabel "Time t (days)"
+set ylabel "Relative activity"
 set tics out
 set xzeroaxis
 set yzeroaxis

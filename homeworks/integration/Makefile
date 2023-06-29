@@ -11,4 +11,4 @@ main.exe : main.cs integrator.cs
 
 .PHONEY : clean
 clean : 
-	rm -f *.exe *.dll [Oo]ut*
+	rm -f *.exe *.dll [Oo]ut* *.svg

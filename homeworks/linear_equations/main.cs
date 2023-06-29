@@ -5,7 +5,7 @@ public class main{
 
     public static void Main(){
         
-        //Test();
+        
         // ------------- check decomp -------------------------------
 
         Random rnd = new Random();

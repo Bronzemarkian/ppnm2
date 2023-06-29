@@ -20,9 +20,9 @@ public static class jacobi{
             }
         }
 
-        A.print();
+        A.print("Random symmetric matrix A=");
 
-        WriteLine("try cyclic");
+        WriteLine("After generating A, I will now use 'cyclic' to perform my eigenvalue decomposition.");
 
         (vector w, matrix V, matrix D) = cyclic(A);
 
@@ -30,13 +30,15 @@ public static class jacobi{
 
         matrix VTAT = V.T * A * V;
 
-        WriteLine($"is V^T * A *V = D? {VTAT.approx(D)}");
+        WriteLine("From this decomposition I will now check some things using the approx() method");
+
+        WriteLine($"Is V^T * A *V = D? {VTAT.approx(D)}");
         matrix VDVT = V * D * V.T;
-        WriteLine($"is V * D *V^T = A? {VDVT.approx(A)}");
+        WriteLine($"Is V * D *V^T = A? {VDVT.approx(A)}");
         matrix VTV = V.T * V;
         matrix VVT = V * V.T;
-        WriteLine($"is V^T * V = id? {VTV.approx(matrix.id(m))}");
-        WriteLine($"is V * V^T = id? {VVT.approx(matrix.id(m))}");
+        WriteLine($"Is V^T * V = id? {VTV.approx(matrix.id(m))}");
+        WriteLine($"Is V * V^T = id? {VVT.approx(matrix.id(m))}");
 
         // ------------ B) -------------------
 
@@ -62,9 +64,9 @@ public static class jacobi{
 
         (vector e, matrix Vb, _ ) = cyclic(H);
 
-        double e0 = e[0]; // as vector e is ordered
-        e.print();
-        WriteLine($"{e0}");
+        WriteLine("\nStarting on b, I never got as far and pretty much only got the first part down.\n");
+        e.print("So the eigenvalues are:");
+        Vb.print("with the corresponding eigenvectors:");
 
     }
 

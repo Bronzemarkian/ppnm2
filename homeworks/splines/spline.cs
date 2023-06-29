@@ -98,10 +98,6 @@ public class qspline{
         return b[ival] + 2*c[ival]*(z-x[ival]);
     }
 
-    // public double integral(double z){
-
-    // }
-
     public int binsearch(double z){
         // we find the interval wherein z lies
         if( x[0] > z || z > x[x.size-1] ) throw new Exception("z not in interval of points");
