@@ -1,0 +1,20 @@
+I have written a program that searches through the objective function using the alloted
+time, and then compares the new-found point with the best point found so far. If the new
+point has a lower function-value than the previous best-point, the new point is updated
+to be the current point. Once the time is up, minimization is then performed on the best point.
+The points are found by using a low-discrepancy sequence, in particular the halton sequence,
+as described in the Monte Carlo chapter.
+First I will check it on a 1d and a 2d function I made.
+
+Global minimum of x^4-3x^3+2x is 2.14091491699219
+Now to test a two-dimensional function.
+Global minimum of 2x^3+6xy^2-3y^3-150x is (4.91318042211691, 4.91317903803378)
+
+I will now go through some test functions for optimization found on wikipedia.
+Global minimum of ackley function is (-4.99784767515966E-08, 5.72790257230148E-08) 
+ with f(x) = 2.1501150015979E-07
+Global minimum of Beale function is (3.00040700183379, 0.50010167982236) 
+ with f(x) = 2.6516010874683E-08
+
+These results all match with the already-known global minimum of the functions,
+where I have used an accuracy of 0.001.

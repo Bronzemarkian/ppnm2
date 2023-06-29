@@ -1,0 +1,14 @@
+To calculate the unit circle with the monto carlo approach, I make a function that
+returns 1 if the length of the vector is below 1, else it returns 0.
+MC integral of the unit circle is 3.1418352 with estimated error 0.000519250650075757 
+
+I also tested the monto carlo approach on the unit circle with different values of N.
+A plot of the actual errors and estimated errors, aswell as the line 1/Sqrt(N) can be seen on mc.svg 
+
+MC integral of the given integral is 1.39115104880609 with estimated error 0.00295992145981103 
+
+Now for part B) 
+
+I've implemented the quasi-random one, and will now do another convergence test.
+The test is again of the unit circle, and can be seen on mcq.svg
+Furthermore, a comparrison between convergence of the plain and quasi can be seen on compare.svg
