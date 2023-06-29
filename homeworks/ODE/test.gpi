@@ -1,0 +1,14 @@
+set terminal svg
+set key bottom right
+set output "test.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "plot of u''=-u"
+set terminal svg background "white" 
+set key outside
+set key right top
+plot [1:4][0:1] "test.data" with lines linetype 1 title "u"

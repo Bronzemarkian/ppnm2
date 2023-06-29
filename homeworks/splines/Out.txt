@@ -1,0 +1,14 @@
+The first set of x and y values I work with are ones I gave on my Makefile.
+I used: x[0]: 1 and y[0]: 2
+I used: x[1]: 2 and y[1]: 6
+I used: x[2]: 3 and y[2]: 2
+I used: x[3]: 4 and y[3]: 1
+I used: x[4]: 5 and y[4]: 5
+I used: x[5]: 6 and y[5]: 7
+I used: x[6]: 7 and y[6]: 8
+The plot of this can be seen on lspline.svg together with the quadratic spline from b)
+The integral of the linear spline from 1 to 6.5 is 22.125
+Now I start on the qspline, which I have made as a class. The plot of the qspline on
+the same points as my linear spline can be seen on lspline.svg
+I also want to test it on the x-y tables given on the homework-page. The result can
+be seen on qspline_test.svg

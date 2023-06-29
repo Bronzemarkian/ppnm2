@@ -1,0 +1,18 @@
+set terminal svg background "white" 
+set key bottom right
+set output "mc.svg"
+#set multiplot layout 2,1 
+set xlabel "Log10(N)"
+set ylabel "Error"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "Plain Monto Carlo"
+set key outside
+set key right top
+plot [0:5][0:1] \
+ "error.data" with points pointtype 7 ps 0.5 title "actual error"\
+ , "estimated_error.data" with point pointtype 7 ps 0.5 title "estimated error" \
+ , "one_over_n.data" with lines linetype 1 title "1/Sqrt(N)"
+

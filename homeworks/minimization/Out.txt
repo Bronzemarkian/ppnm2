@@ -1,0 +1,10 @@
+The minimum of x^2 is -1.49011611938477E-08, with a starting guess of x = 2 
+
+The minimum of Rosenbrock Valley's function is (0.999995492684322, 0.999990975556999)
+with a starting guess of (2,2) 
+
+The minimum of Himmelblau Valley's function is (2.99999991551419, 2.00000136245806)
+with a starting guess of (2,2). It also has 3 more minima, which I will find:
+With guess of (-2,2) the minimum found is (-2.80511812679514, 3.13131242981876)
+With guess of (2,-2) the minimum found is (3.58442829308893, -1.84812649801965)
+With guess of (-4,-2) the minimum found is (-3.77931015792465, -3.28318666572879)

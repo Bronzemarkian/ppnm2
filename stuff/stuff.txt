@@ -1,0 +1,13 @@
+
+Med stdout og stderror
+
+I makefile:
+
+exp.data Out.txt: main.exe known.txt
+	mono main.exe <known.txt 1>exp.dat 2> Out.txt
+
+Så skrive i main.cs:
+Error.WriteLine("her")
+
+
+

@@ -1,0 +1,14 @@
+set terminal svg
+set key bottom right
+set output "erf.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "plot of erf function"
+set terminal svg background "white" 
+set key outside
+set key right top
+plot [-2:2][-1:1] "erf.data" with lines linetype 1 title "erf(x)"

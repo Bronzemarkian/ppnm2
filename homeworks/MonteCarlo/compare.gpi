@@ -1,0 +1,17 @@
+set terminal svg background "white" 
+set key bottom right
+set output "compare.svg"
+#set multiplot layout 2,1 
+set xlabel "Log10(N)"
+set ylabel "Error"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "Comparrison of convergence"
+set key outside
+set key right top
+plot [0:5][0:1] \
+ "error.data" with points pointtype 7 ps 0.5 title "Plain MonteCarlo"\
+ , "error2.data" with point pointtype 7 ps 0.5 title "Quasi MonteCarlo"
+

@@ -1,0 +1,20 @@
+set terminal svg
+set key bottom right
+set output "qspline_test.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set samples 800
+set title "Qspline Test"
+set terminal svg background "white" 
+set key outside
+set key right top
+plot [1:5][0:25] \
+ "qspline_test.data" using 1:2 with lines linetype 1 title "Qspline test 1"\
+ , "qspline_points.data" using 1:2 with points pointtype 6 title "test data 1"\
+ , "qspline_test.data" using 1:3 with lines linetype 2 title "Qspline test 2"\
+ , "qspline_points.data" using 1:3 with points pointtype 7 title "test data 2"\
+ , "qspline_test.data" using 1:4 with lines linetype 3 title "Qspline test 3"\
+ , "qspline_points.data" using 1:4 with points pointtype 8 title "test data 3"

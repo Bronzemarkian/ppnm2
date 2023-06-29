@@ -1,0 +1,20 @@
+The driver as well as the stepper is made, and it is used on the ODE u'' = -u.
+From u'' = -u we get, with y = (y1,y2), that y' = M*y, where M = [[0,0],[-1,0]],
+and we get the two equations y1' = y2 and y2' = -y1. So when we give y,
+it should return (y2,-y1), so that is the function I use.
+I use the starting conditions u=0 and u'=1, and the solution can be seen on test.svg
+
+For the oscillator, I followed the example and the solution can be seen on oscillator.svg
+
+Now for b! I've implemented so that only the final value of y is returned if no list is given.
+So the solution for u''=-u at x = 4 is u = 0.138613611418678 and u' = -0.990487280306443
+
+Now for the problem of equatorial motion.
+When I plot, I plot r and r', since r = 1/u and r' = u' * r^2 
+
+I look at phi from 0 to 12.5663706143592, with y1=1 and y2=0, etha=0. Can be seen on b1.svg. 
+
+Setting u' = -0.5 we now get an elliptical motion, so y2=-0.5. Plot can be seen on b2.svg 
+
+For the third example of relativistic precession of a planetory orbit, the change is etha=0.1, and
+it can be seen on b3.svg

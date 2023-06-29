@@ -1,8 +1,10 @@
-erf.svg : exp.gpi exp.data
+Outputfile = Out.txt
+
+exp.svg : exp.gpi exp.data
 	gnuplot $<
 
-exp.data : main.exe known.txt
-	mono main.exe <known.txt 1>$@ 2>log
+exp.data $(Outputfile): main.exe known.data
+	mono main.exe -outfile:$(Outputfile) -outfile_data:exp.data <known.data
 
 
 main.exe : main.cs qrgs.cs leastsq.cs matrix.dll
@@ -12,7 +14,7 @@ DIR = ../../matlib/matrix
 matrix.dll : $(DIR)/matrix.cs $(DIR)/vector.cs
 	mcs -target:library -out:./matrix.dll $^
 
-known.txt : Makefile
+known.data : Makefile
 	>$@  
 	echo 1 117 5 >> $@
 	echo 2 100 5 >> $@
@@ -27,4 +29,4 @@ known.txt : Makefile
 
 .PHONEY : clean
 clean : 
-	rm -f *.exe *.dll [Oo]ut* *.data
+	rm -f *.exe *.dll [Oo]ut* *.data *.log  *.svg *.txt utputfile

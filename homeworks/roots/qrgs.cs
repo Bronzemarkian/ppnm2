@@ -26,6 +26,7 @@ public class qrgs{
 
             b = Q.T*b; // our new b
 
+
             for(int i=b.size-1;i>=0;i--){
                 double sum = 0;
                 for(int k=i+1;k<b.size;k++) sum += R[i,k]*b[k];
@@ -55,5 +56,21 @@ public class qrgs{
 
         } // inverse
 
+
+    public static void Test(){
+        var ma = new matrix("1 2 ; 5 4");
+        ma.print();
+        (ma+ma.T).print();
+        (matrix.id(3)).print();
+        WriteLine("rows:");
+        ma.rows(1,1).print();
+        WriteLine("cols:");
+        ma.cols(1,1).print();
+
+        WriteLine("multiplied");
+        double ij = ma[0,1];
+        WriteLine($"{ij}");
+
+    }
 }
 
